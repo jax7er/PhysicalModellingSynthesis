@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Physical Modelling Synthesis Y1469609</title>
+  </head>
+  <body style="margin-left: 36px; width: 672px;"> <br>
+    <h1 style="text-align: center; width: 672px;"><a class="mozTocH1" id="mozTocId312809"></a><span
+        style="font-family: monospace;">Physical Modelling Synthesis Assignment</span></h1>
+    <p><br>
+    </p>
+    <ol id="mozToc">
+      <!--mozToc h1 1 h2 2 h3 3 h4 4 h5 5 h6 6-->
+      <li><a href="#mozTocId312809">Physical Modelling Synthesis Assignment</a>
+        <ol>
+          <li><a href="#mozTocId805125">Introduction</a>
+            <ol>
+              <li><a href="#mozTocId222098">Key Points</a></li>
+              <li><a href="#mozTocId81423">Benefits</a></li>
+              <li><a href="#mozTocId616123">Drawbacks</a></li>
+              <li><a href="#mozTocId308147">Sound Examples</a></li>
+            </ol>
+          </li>
+          <li><a href="#mozTocId468899">My System</a>
+            <ol>
+              <li><a href="#mozTocId486450">From Real-world to Model</a>
+                <ol>
+                  <li><a href="#mozTocId424473">Physical Properties and
+                      Underlying Mathematics</a></li>
+                  <li><a href="#mozTocId800693">Discretisation and Code
+                      Implementation</a></li>
+                </ol>
+              </li>
+              <li><a href="#mozTocId586038">Block Diagram</a></li>
+              <li><a href="#mozTocId491577">Behavioral Predictions</a></li>
+            </ol>
+          </li>
+          <li><a href="#mozTocId723488">Proof of Concept</a>
+            <ol>
+              <li><a href="#mozTocId419471">Time and Frequency Domain Analyses</a></li>
+              <li><a href="#mozTocId588540">Generated Audio Output</a></li>
+              <li><a href="#mozTocId135512">Enhancements</a></li>
+            </ol>
+          </li>
+          <li><a href="#mozTocId814544">Sound Examples</a>
+            <ol>
+              <li><a href="#mozTocId36267">Presets</a></li>
+              <li><a href="#mozTocId167037">Capability of the System</a></li>
+            </ol>
+          </li>
+          <li><a href="#mozTocId870223">Future Development</a></li>
+        </ol>
+      </li>
+    </ol>
+    <p><br>
+    </p>
+    <h2><a class="mozTocH2" id="mozTocId805125"></a>Introduction</h2>
+    <p>Physical and related models for sounds design and procedural audio
+      systems</p>
+    <p>Physical Modelling a paradigm of sound synthesis and has been of interest
+      in the research environment since it's emergence in the 1980's [1]. It
+      concerns all aspects of taking a physical system, real or abstract, and
+      describing it using physical principles to then be simplified into a
+      discrete numerical system. </p>
+    <p>Any object in the real world can have a physical model associated with
+      it, as they all obey a certain set of physical laws. For example, a string
+      can be considered a chain of coupled nodes, each of which is connected to
+      it's neighbour and exerts a force linearly related to it's relative
+      displacement and velocity.</p>
+    <h3>Key Points and Types</h3>
+    <p>Physical models vary from other forms of sound synthesis in a number of
+      ways. Firstly, the way they are designed is quite neat, with the sound
+      generation and control aspects of the system being separated. This means
+      that the sample rates for the sound generation and the control signals
+      need not be the same. </p>
+    <p>The sounds generated from these models, can easily be compared to real
+      life instruments, as they have a natural quality to them. The sounds are
+      tangible and familiar as they represent those which we hear in everyday
+      life and morph and develop much like real sounds do.</p>
+    <h3>Pros and Cons</h3>
+    <p><br>
+    </p>
+    <h3><a class="mozTocH3" id="mozTocId308147"></a>Sound Examples</h3>
+    <p><br>
+    </p>
+    <h2><a class="mozTocH2" id="mozTocId468899"></a>My System</h2>
+    <h3><a class="mozTocH3" id="mozTocId486450"></a>From Real-world to Model</h3>
+    <h4><a class="mozTocH4" id="mozTocId424473"></a>Physical Properties and
+      Underlying Mathematics</h4>
+    <p><br>
+    </p>
+    <h4><a class="mozTocH4" id="mozTocId800693"></a>Discretisation and Code
+      Implementation</h4>
+    &nbsp;
+    <h3><a class="mozTocH3" id="mozTocId586038"></a>Block Diagram</h3>
+    <p><br>
+    </p>
+    <h3><a class="mozTocH3" id="mozTocId491577"></a>Behavioral Predictions</h3>
+    <p><br>
+    </p>
+    <h2><a class="mozTocH2" id="mozTocId723488"></a>Proof of Concept</h2>
+    <h3><a class="mozTocH3" id="mozTocId419471"></a>Time and Frequency Domain
+      Analyses</h3>
+    <p><br>
+    </p>
+    <h3><a class="mozTocH3" id="mozTocId588540"></a>Generated Audio Output</h3>
+    <p><br>
+    </p>
+    <h3><a class="mozTocH3" id="mozTocId135512"></a>Enhancements</h3>
+    <p><br>
+    </p>
+    <h2><a class="mozTocH2" id="mozTocId814544"></a>Sound Examples</h2>
+    <h3><a class="mozTocH3" id="mozTocId36267"></a>Presets</h3>
+    <p><br>
+    </p>
+    <h3><a class="mozTocH3" id="mozTocId167037"></a>Capability of the System</h3>
+    <p><br>
+    </p>
+    <h2><a class="mozTocH2" id="mozTocId870223"></a>Future Development</h2>
+    <p><br>
+    </p>
+    <h2>References</h2>
+    <p><br>
+    </p>
+  </body>
+</html>
