@@ -4,123 +4,953 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <title>Physical Modelling Synthesis Y1469609</title>
   </head>
-  <body style="margin-left: 36px; width: 672px;"> <br>
-    <h1 style="text-align: center; width: 672px;"><a class="mozTocH1" id="mozTocId312809"></a><span
-        style="font-family: monospace;">Physical Modelling Synthesis Assignment</span></h1>
-    <p><br>
-    </p>
+  <body style="margin-left: 36px; width: 672px;"><!--[if !mso]>
+<style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}</style>
+<![endif]-->
+    <br>
+    <div style="text-align: center;">
+      <h1><a class="mozTocH1" id="mozTocId880527"></a><span style="font-family: Constantia;">Physical
+          Modelling Synthesis Assignment</span></h1>
+    </div>
     <ol id="mozToc">
       <!--mozToc h1 1 h2 2 h3 3 h4 4 h5 5 h6 6-->
-      <li><a href="#mozTocId312809">Physical Modelling Synthesis Assignment</a>
+      <li><a href="#mozTocId880527">Physical Modelling Synthesis Assignment</a></li>
+      <li><a href="#mozTocId681929">Introduction</a>
         <ol>
-          <li><a href="#mozTocId805125">Introduction</a>
+          <li><a href="#mozTocId669890">Types</a>
             <ol>
-              <li><a href="#mozTocId222098">Key Points</a></li>
-              <li><a href="#mozTocId81423">Benefits</a></li>
-              <li><a href="#mozTocId616123">Drawbacks</a></li>
-              <li><a href="#mozTocId308147">Sound Examples</a></li>
+              <li><a href="#mozTocId933696">Mass-spring Networks</a></li>
+              <li><a href="#mozTocId175581">Digital Waveguides</a></li>
+              <li><a href="#mozTocId592884">Finite Difference Schemes</a></li>
             </ol>
           </li>
-          <li><a href="#mozTocId468899">My System</a>
-            <ol>
-              <li><a href="#mozTocId486450">From Real-world to Model</a>
-                <ol>
-                  <li><a href="#mozTocId424473">Physical Properties and
-                      Underlying Mathematics</a></li>
-                  <li><a href="#mozTocId800693">Discretisation and Code
-                      Implementation</a></li>
-                </ol>
-              </li>
-              <li><a href="#mozTocId586038">Block Diagram</a></li>
-              <li><a href="#mozTocId491577">Behavioral Predictions</a></li>
-            </ol>
-          </li>
-          <li><a href="#mozTocId723488">Proof of Concept</a>
-            <ol>
-              <li><a href="#mozTocId419471">Time and Frequency Domain Analyses</a></li>
-              <li><a href="#mozTocId588540">Generated Audio Output</a></li>
-              <li><a href="#mozTocId135512">Enhancements</a></li>
-            </ol>
-          </li>
-          <li><a href="#mozTocId814544">Sound Examples</a>
-            <ol>
-              <li><a href="#mozTocId36267">Presets</a></li>
-              <li><a href="#mozTocId167037">Capability of the System</a></li>
-            </ol>
-          </li>
-          <li><a href="#mozTocId870223">Future Development</a></li>
+          <li><a href="#mozTocId532428">Pros and Cons</a></li>
+          <li><a href="#mozTocId871236">Sound Examples</a></li>
         </ol>
       </li>
+      <li><a href="#mozTocId90686">My System</a>
+        <ol>
+          <li><a href="#mozTocId778414">From Real-world to Model</a>
+            <ol>
+              <li><a href="#mozTocId582798">Physical Properties and Underlying
+                  Mathematics</a></li>
+              <li><a href="#mozTocId395222">Discretisation and Code
+                  Implementation</a></li>
+            </ol>
+          </li>
+          <li><a href="#mozTocId524000">Block Diagram</a></li>
+          <li><a href="#mozTocId322923">Behavioural Predictions</a></li>
+        </ol>
+      </li>
+      <li><a href="#mozTocId528435">Proof of Concept</a>
+        <ol>
+          <li><a href="#mozTocId160492">Time and Frequency Domain Analyses</a></li>
+          <li><a href="#mozTocId448865">Generated Audio Output</a></li>
+          <li><a href="#mozTocId982180">Enhancements</a></li>
+        </ol>
+      </li>
+      <li><a href="#mozTocId832236">Sound Examples</a>
+        <ol>
+          <li><a href="#mozTocId342259">Pre-sets</a></li>
+          <li><a href="#mozTocId560479">Capability of the System</a></li>
+        </ol>
+      </li>
+      <li><a href="#mozTocId882418">Future Development</a></li>
+      <li><a href="#mozTocId381184">References</a></li>
     </ol>
     <p><br>
     </p>
-    <h2><a class="mozTocH2" id="mozTocId805125"></a>Introduction</h2>
-    <p>Physical and related models for sounds design and procedural audio
-      systems</p>
-    <p>Physical Modelling a paradigm of sound synthesis and has been of interest
-      in the research environment since it's emergence in the 1980's [1]. It
-      concerns all aspects of taking a physical system, real or abstract, and
-      describing it using physical principles to then be simplified into a
-      discrete numerical system. </p>
-    <p>Any object in the real world can have a physical model associated with
-      it, as they all obey a certain set of physical laws. For example, a string
-      can be considered a chain of coupled nodes, each of which is connected to
-      it's neighbour and exerts a force linearly related to it's relative
-      displacement and velocity.</p>
-    <h3>Key Points and Types</h3>
-    <p>Physical models vary from other forms of sound synthesis in a number of
-      ways. Firstly, the way they are designed is quite neat, with the sound
-      generation and control aspects of the system being separated. This means
-      that the sample rates for the sound generation and the control signals
-      need not be the same. </p>
-    <p>The sounds generated from these models, can easily be compared to real
-      life instruments, as they have a natural quality to them. The sounds are
-      tangible and familiar as they represent those which we hear in everyday
-      life and morph and develop much like real sounds do.</p>
-    <h3>Pros and Cons</h3>
-    <p><br>
+    <h1><a class="mozTocH1" id="mozTocId681929"></a>Introduction</h1>
+    <p class="MsoNormal">In general, the aim of sound synthesis is to move away
+      from
+      sampling, so that existing sounds can be reproduced or expanded and new
+      sounds,
+      impossible to generate naturally, can be realised. Some of the early
+      methods
+      included additive, wavetable, and FM synthesis, all of which were not
+      particularly computationally intensive but all sounded rather artificial,
+      without much natural character, due to the fact that the spectral content
+      of
+      the sounds was relatively constant or predictable. The paradigm of
+      Physical
+      Modelling came out of this desire to produce sounds that were more
+      interesting
+      and take inspiration from real physical systems, such as musical
+      instruments,
+      as well as having the ability to produce abstract virtual instruments that
+      had
+      the satisfying morphing qualities of real instruments.</p>
+    <p class="MsoNormal">An acoustic physical model can be seen as a set of
+      Newtonian
+      equations that describe the physical motions of an object or system, which
+      can
+      then be used to generate sound. These models have various parameters that
+      are
+      linked to the physical nature of the object, such as tension, elasticity,
+      and
+      size, which change how the model responds to inputs. Compared to other
+      methods
+      of sound synthesis, one of the most notable differences is the naturalness
+      of
+      the sounds produced, making them an intriguing field of research in
+      creating
+      novel virtual musical instruments.</p>
+    <h2><a class="mozTocH2" id="mozTocId669890"></a>Types</h2>
+    <p class="MsoNormal">Many branches of physical modelling exist that explore
+      different methods. Below is a summary of a few of them.</p>
+    <h3><a class="mozTocH3" id="mozTocId933696"></a>Mass-spring Networks</h3>
+    <p class="MsoNormal">These are a collection of masses with connections that
+      obey
+      Hooke’s law, <span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/f=-kx.png" height="20" width="56"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">,</span> which
+      states
+      that the displacement of a deformation of a solid is directly proportional
+      to
+      the deforming force <span style="mso-no-proof:
+ yes">[1]</span>.
+      With the addition of a damping factor <span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/z.png" height="20" width="7"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, and the
+        velocity of
+        the mass </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/v.png" height="20" width="8"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, Hooke’s law
+        can be
+        extended for the case of a lossy system, where </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/f=-kx-zv.png" height="20" width="89"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">.</span></p>
+    <p class="MsoNormal">This can then be equated with Newton’s second law of
+      motion,
+      <span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/f=ma.png" height="20" width="49"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, to get a
+        formula for
+        the acceleration of each mass due to the forces exerted on it by the
+        other
+        masses of at a time </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/t.png" height="20" width="6"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">:</span></p>
+    <p style="text-align: center;" class="MsoNormal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/at=-kxt+zvt_m.png" height="36" width="106"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-fareast-theme-font:minor-fareast">Noting that velocity is the time
+        derivative of displacement, acceleration is the time derivative of
+        velocity,
+        and using a finite difference approximation for the partial derivatives:</span><span
+        style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"></span><span
+        style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal" style="text-align:center" align="center"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/vt=-xt-xt-1_dt.png" height="33" width="90"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal" style="text-align:center" align="center"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/at=dvt_dt=ddxt_dtdt.png" height="39" width="224"></span><span
+        style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-fareast-theme-font:minor-fareast">The equation can be rewritten, letting </span><span
+        style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:8.5pt;mso-text-raise:-8.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/k%27=kdt%5E2_m.png" height="30" width="64"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, </span><span
+        style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:8.5pt;mso-text-raise:-8.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/z%27=zdt_m.png" height="28" width="48"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, and solving
+        for </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:5.5pt;mso-text-raise:-5.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/xt+1.png" height="20" width="27"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">:</span></p>
+    <p style="text-align: center;" class="MsoNormal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/xn+1=xn%282-k%27-z%27%29+xn-1%28z%27-1%29.png" height="20"
+          width="232"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal">This last equation gives the next value of the
+      displacement
+      based on the current and previous displacements for one dimension. This
+      can be
+      generalised to three dimensions to allow networks of any size, shape and
+      connectivity to be realised. Virtual microphones or pickups can be placed
+      on
+      any of the masses to take its movement as the sound output.</p>
+    <h3><a class="mozTocH3" id="mozTocId175581"></a>Digital Waveguides</h3>
+    <p class="MsoNormal">The underlying mathematics for the digital waveguide
+      comes
+      from the discretised travelling wave solution to the wave equation:<span style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p style="text-align: center;" class="MsoNormal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/y%28nT,mX%29=yr%28nT-mX_c%29+yl%28nT+mX_c%29.png" height="36"
+          width="282"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-fareast-theme-font:minor-fareast">Which can be rewritten, observing that </span><span
+        style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:8.5pt;mso-text-raise:-8.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/T=X_c.png" height="28" width="36"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, letting </span><span
+        style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:5.5pt;mso-text-raise:-5.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/y+%28a%29=yr%28aT%29.png" height="20" width="100"></span><span
+        style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"><span style="mso-spacerun:yes">&nbsp;</span>and
+        </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:
+minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;position:relative;top:5.5pt;mso-text-raise:-5.5pt;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/y-%28b%29=yl%28bT%29.png" height="20" width="98"></span><span
+        style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, as</span> <span
+        style="mso-no-proof:yes">[2]</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">:</span></p>
+    <p style="text-align: center;" class="MsoNormal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/y%28nT,mX%29=y+%28n-m%29+y-%28n+m%29.png" height="20" width="239"></span><span
+        style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-fareast-theme-font:minor-fareast">This equation can be realised using two
+        parallel delay lines of length </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/M.png" height="20" width="13"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, one
+        representing the
+        right going wave, </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:5.5pt;mso-text-raise:-5.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/y+%28n-m%29.png" height="20" width="68"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, and the
+        other
+        representing the left going wave, </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:5.5pt;mso-text-raise:-5.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/y-%28n+m%29.png" height="20" width="68"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">. The values
+        of the
+        delays lines at an arbitrary sample point </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/m_.png" height="20" width="13"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"><span style="mso-spacerun:yes">&nbsp;</span>are
+        then summed as shown below <span style="mso-no-proof:yes">[3]</span>:</span></p>
+    <p class="MsoNormal" style="text-align:center" align="center"><span style="mso-fareast-language:EN-GB;mso-no-proof:yes"><img
+          src="images/digital_waveguide.png" height="182" width="461"></span><span
+        style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-fareast-theme-font:minor-fareast">This is a very efficient algorithm as it
+        only requires reading, writing, and addition operations when being
+        executed on
+        a computer. This allowed this type of synthesis to be possible early on
+        compared
+        to other methods due to its low computational cost, and was used in the
+      </span>Kelly-Lochbaum
+      vocal tract model, a digital implementation of a piecewise cylindrical
+      tube
+      with a discontinuous diameter, with lossless scattering junctions to model
+      the
+      discontinuities, shown below <span style="mso-no-proof:
+ yes">[4]</span>:</p>
+    <p class="MsoNormal" style="text-align:center" align="center"><span style="mso-fareast-language:EN-GB;mso-no-proof:yes"><img
+          src="images/kelly_lochbaum_vocal_tract_model.png" height="207" width="412"></span></p>
+    <h3><a class="mozTocH3" id="mozTocId592884"></a>Finite Difference Schemes</h3>
+    <p class="MsoNormal">In general, when a function and its derivatives are
+      single-valued, finite and continuous, then a Taylor series expansion can
+      be
+      taken to give and approximation of the function and versions of it shifted
+      by <span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/+-h.png" height="20" width="19"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">. Considering
+        4<sup>th</sup>
+        and higher order terms negligible, and taking the difference of the two
+        Taylor
+        series from the </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/+-h.png" height="20" width="19"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"><span style="mso-spacerun:yes">&nbsp;</span>shift,
+        the following equation can be obtained <span style="mso-no-proof:yes">[5]</span>:</span></p>
+    <p style="text-align: center;" class="MsoNormal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/dU%28x%29_dx=U%28x+h%29-U%28x-h%29_2h.png" height="37" width="200"></span><span
+        style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-fareast-theme-font:minor-fareast">This is known as the central-difference
+        approximation, as it looks at points equidistant on both sides of the
+        point of
+        interest. Forward- and backward-difference approximations can be
+        obtained by
+        taking the difference of difference combinations of Taylor series:</span></p>
+    <p style="text-align: center;" class="MsoNormal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:&quot;Times New Roman&quot;;mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"></span><img
+        src="images/dU%28x%29_dx=U%28x+h%29-U%28x%29_h.png"></p>
+    <p style="text-align: center;" class="MsoNormal"><img src="images/dU%28x%29_dx=U%28x%29-U%28x-h%29_h.png"><br>
+      <!--[if !mso]>
+<style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}</style>
+<![endif]--><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span>
     </p>
-    <h3><a class="mozTocH3" id="mozTocId308147"></a>Sound Examples</h3>
-    <p><br>
-    </p>
-    <h2><a class="mozTocH2" id="mozTocId468899"></a>My System</h2>
-    <h3><a class="mozTocH3" id="mozTocId486450"></a>From Real-world to Model</h3>
-    <h4><a class="mozTocH4" id="mozTocId424473"></a>Physical Properties and
-      Underlying Mathematics</h4>
-    <p><br>
-    </p>
-    <h4><a class="mozTocH4" id="mozTocId800693"></a>Discretisation and Code
-      Implementation</h4>
-    &nbsp;
-    <h3><a class="mozTocH3" id="mozTocId586038"></a>Block Diagram</h3>
-    <p><br>
-    </p>
-    <h3><a class="mozTocH3" id="mozTocId491577"></a>Behavioral Predictions</h3>
-    <p><br>
-    </p>
-    <h2><a class="mozTocH2" id="mozTocId723488"></a>Proof of Concept</h2>
-    <h3><a class="mozTocH3" id="mozTocId419471"></a>Time and Frequency Domain
-      Analyses</h3>
-    <p><br>
-    </p>
-    <h3><a class="mozTocH3" id="mozTocId588540"></a>Generated Audio Output</h3>
-    <p><br>
-    </p>
-    <h3><a class="mozTocH3" id="mozTocId135512"></a>Enhancements</h3>
-    <p><br>
-    </p>
-    <h2><a class="mozTocH2" id="mozTocId814544"></a>Sound Examples</h2>
-    <h3><a class="mozTocH3" id="mozTocId36267"></a>Presets</h3>
-    <p><br>
-    </p>
-    <h3><a class="mozTocH3" id="mozTocId167037"></a>Capability of the System</h3>
-    <p><br>
-    </p>
-    <h2><a class="mozTocH2" id="mozTocId870223"></a>Future Development</h2>
-    <p><br>
-    </p>
-    <h2>References</h2>
-    <p><br>
-    </p>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-fareast-theme-font:minor-fareast">By extension, second derivatives may be
+        calculated, and using partial differentiation to include multiple
+        variables,
+        such as space and time, the wave equation can be written in terms of
+        finite
+        difference approximations as follows:</span></p>
+    <p style="text-align: center;" class="MsoNormal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/d%5E2U_dt%5E2=.png" height="40" width="387"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-fareast-theme-font:minor-fareast">In terms of physical modelling, this
+        formula can be rearranged to calculate the next displacement or pressure
+        value,
+      </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:7.0pt;mso-text-raise:-7.0pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/Ujn+1.png" height="23" width="32"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast">, by using
+        neighbouring
+        points on the space-time grid <span style="mso-no-proof:yes">[6]</span>,
+        where:</span></p>
+    <p class="MsoNormal" style="text-align:center" align="center"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/Ujn+1=A+B+C.png" height="23" width="252"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-fareast-theme-font:minor-fareast">The following notations are used in the
+        above equations:</span></p>
+    <p class="MsoListParagraphCxSpFirst" style="text-indent: -18pt; text-align: left; margin-left: 40px;"><span
+        style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span></span></span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:4.5pt;mso-text-raise:-4.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/T=dt_X=dx.png" height="20" width="98"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <div style="margin-left: 40px;">
+    </div>
+    <p class="MsoListParagraphCxSpMiddle" style="text-indent: -18pt; text-align: left; margin-left: 40px;"><span
+        style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span></span></span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:7.0pt;mso-text-raise:-7.0pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/Ujn=U%28t,x%29_t=nT_x=jX.png" height="23" width="115"></span><span
+        style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"><span style="mso-spacerun:yes">&nbsp;</span></span></p>
+    <div style="margin-left: 40px;">
+    </div>
+    <p class="MsoListParagraphCxSpLast" style="text-indent: -18pt; text-align: left; margin-left: 40px;"><span
+        style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </span></span></span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;position:relative;top:8.5pt;mso-text-raise:-8.5pt;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img
+          src="images/lambda=cT_X.png" height="27" width="251"></span><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast"></span></p>
+    <h2><a class="mozTocH2" id="mozTocId532428"></a>Pros and Cons</h2>
+    <p class="MsoNormal">Physical models are superior in their ability to
+      generate
+      natural sounds to other forms of synthesis, such as wavetable which gets
+      very
+      boring as the samples never change, and are merely repeated. Relatively
+      few
+      parameters are needed to alter the sound and the models are generally
+      perceptually easier to control, unlike additive synthesisers which require
+      large
+      numbers of sinusoids, amplitudes and phases, the calculations of which are
+      not
+      practical even for the most experienced engineer or musician.
+      Consequently,
+      these models allow minor changes to be made with minimal effort, as only a
+      few
+      parameters control the overall sound. This means that as well as being
+      simpler
+      than other methods of synthesis, modelled instruments could be beneficial
+      in
+      recording, as changes to notes don’t require a whole rerecording.</p>
+    <p class="MsoNormal">However, there are some downfalls that mainly revolve
+      around
+      the fact that physical models can be much more computationally expensive
+      than
+      their counterparts. For instance, the number of timbres that can be
+      produced
+      using an FM scheme is huge when compared to the computation required to
+      perform
+      the synthesis. This means that real-time applications are much harder, or
+      impossible, to realise with current computing power. With simulations of
+      some
+      complex models taking days to render an output, this greatly reduces the
+      feasibility of these models to be used as live instruments or for
+      composition <span style="mso-no-proof:yes">[5]</span>.</p>
+    <h2><a class="mozTocH2" id="mozTocId871236"></a>Sound Examples</h2>
+    <p class="MsoNormal">Kelly and Lochbaum collaborated with Max Matthews in
+      1962 to
+      produce a version of ‘Bicycle Built for Two” to demonstrate the
+      capabilities of
+      their model. Stanley Kubrick then used this in his 1968 film “2001: A
+      Space
+      Odyssey” as the song that the main computer HAL sings before being
+      deactivated.</p>
+    <p class="MsoNormal">ADD SOUND SAMPLE</p>
+    <p class="MsoNormal">The ‘Sculpture’ synthesiser in Apple’s DAW Logic uses
+      physical modelling algorithms to generate its output and has a
+      perceptually
+      intuitive interface that involves sliding between four material types,
+      Nylon,
+      Wood, Glass, and Steel, to change the quality of the output.</p>
+    <p class="MsoNormal">Nylon: ADD SOUND SAMPLE</p>
+    <p class="MsoNormal">Wood: ADD SOUND SAMPLE</p>
+    <p class="MsoNormal">Glass: ADD SOUND SAMPLE</p>
+    <p class="MsoNormal">Steel: ADD SOUND SAMPLE</p>
+    <p class="MsoNormal">Hybrid: ADD SOUND SAMPLE</p>
+    <h1><a class="mozTocH1" id="mozTocId90686"></a>My System</h1>
+    <p class="MsoNormal">Mass and spring triangular array</p>
+    <h2><a class="mozTocH2" id="mozTocId778414"></a>From Real-world to Model</h2>
+    <h3><a class="mozTocH3" id="mozTocId582798"></a>Physical Properties and
+      Underlying Mathematics</h3>
+    <p class="MsoNormal">&nbsp;</p>
+    <h3><a class="mozTocH3" id="mozTocId395222"></a>Discretisation and Code
+      Implementation</h3>
+    <p class="MsoNormal">&nbsp;</p>
+    <h2><a class="mozTocH2" id="mozTocId524000"></a>Block Diagram</h2>
+    <p class="MsoNormal">&nbsp;</p>
+    <h2><a class="mozTocH2" id="mozTocId322923"></a>Behavioural Predictions</h2>
+    <p class="MsoNormal">&nbsp;</p>
+    <h1><a class="mozTocH1" id="mozTocId528435"></a>Proof of Concept</h1>
+    <h2><a class="mozTocH2" id="mozTocId160492"></a>Time and Frequency Domain
+      Analyses</h2>
+    <p class="MsoNormal">&nbsp;</p>
+    <h2><a class="mozTocH2" id="mozTocId448865"></a>Generated Audio Output</h2>
+    <p class="MsoNormal">&nbsp;</p>
+    <h2><a class="mozTocH2" id="mozTocId982180"></a>Enhancements</h2>
+    <p class="MsoNormal">&nbsp;</p>
+    <h1><a class="mozTocH1" id="mozTocId832236"></a>Sound Examples</h1>
+    <h2><a class="mozTocH2" id="mozTocId342259"></a>Pre-sets</h2>
+    <p class="MsoNormal">&nbsp;</p>
+    <h2><a class="mozTocH2" id="mozTocId560479"></a>Capability of the System</h2>
+    <p class="MsoNormal">&nbsp;</p>
+    <h1><a class="mozTocH1" id="mozTocId882418"></a>Future Development</h1>
+    <p class="MsoNormal">&nbsp;</p>
+    <!--[if gte mso 9]><xml>
+ <o:DocumentProperties>  <o:Version>14.00</o:Version>
+ </o:DocumentProperties> <o:OfficeDocumentSettings>
+  <o:AllowPNG/> </o:OfficeDocumentSettings>
+</xml><![endif]-->
+    <h1><a class="mozTocH1" id="mozTocId381184"></a>References<span style="mso-no-proof:yes"></span></h1>
+    <table class="MsoNormalTable" style="width:100.0%;mso-cellspacing:1.5pt;mso-yfti-tbllook:1184"
+      border="0" cellpadding="0" width="100%">
+      <tbody>
+        <tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes">
+          <td style="width:1.0%;padding:.75pt .75pt .75pt .75pt" valign="top" width="1%">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">[1] </span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+          <td style="padding:.75pt .75pt .75pt .75pt" valign="top">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">T. E. o.
+                E. Britannica, “Hooke’s law,” Encyclopædia Britannica, 24
+                February 2001. [Online]. Available:
+                https://www.britannica.com/science/Hookes-law. [Accessed 28
+                March 2017].</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-fareast-theme-font:minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow:1">
+          <td style="width:1.0%;padding:.75pt .75pt .75pt .75pt" valign="top" width="1%">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">[2] </span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+          <td style="padding:.75pt .75pt .75pt .75pt" valign="top">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">J. O. S.
+                III, “Physical Modeling using Digital Waveguides,” 16 March
+                1993. [Online]. Available:
+                https://courses.cs.washington.edu/courses/cse467/05wi/pdfs/pmudw.pdf.
+                [Accessed 29 March 2017].</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-fareast-theme-font:minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow:2">
+          <td style="width:1.0%;padding:.75pt .75pt .75pt .75pt" valign="top" width="1%">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">[3] </span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+          <td style="padding:.75pt .75pt .75pt .75pt" valign="top">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">J. O. S.
+                III, “Digital Waveguide Scheme,” Center for Computer Research in
+                Music and Acoustics (CCRMA), 28 December 2005. [Online].
+                Available:
+                https://ccrma.stanford.edu/~jos/wgfdtd/Digital_Waveguide_Scheme.html.
+                [Accessed 29 March 2017].</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-fareast-theme-font:minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow:3">
+          <td style="width:1.0%;padding:.75pt .75pt .75pt .75pt" valign="top" width="1%">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">[4] </span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+          <td style="padding:.75pt .75pt .75pt .75pt" valign="top">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">J. Smith,
+                “Kelly-Lochbaum Vocal Tract Model,” Stanford University, 19
+                February 2006. [Online]. Available:
+                https://ccrma.stanford.edu/~jos/SMAC03S/Kelly_Lochbaum_Vocal_Tract_Model.html.
+                [Accessed 28 March 2017].</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-fareast-theme-font:minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow:4">
+          <td style="width:1.0%;padding:.75pt .75pt .75pt .75pt" valign="top" width="1%">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">[5] </span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+          <td style="padding:.75pt .75pt .75pt .75pt" valign="top">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">G. D.
+                Smith, “Numerical solution of partial differential equations,”
+                in <i>Finite Difference Methods</i>, Oxford, Oxford University
+                Press, 2004, pp. 6-7.</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow:5">
+          <td style="width:1.0%;padding:.75pt .75pt .75pt .75pt" valign="top" width="1%">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">[6] </span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+          <td style="padding:.75pt .75pt .75pt .75pt" valign="top">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">Universite
+                catholique de Louvain, “Time and space discretisations using
+                finite differences,” 2008. [Online]. Available:
+                http://www.climate.be/textbook/chapter3_node19.xml. [Accessed 29
+                March 2017].</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-fareast-theme-font:minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow:6">
+          <td style="width:1.0%;padding:.75pt .75pt .75pt .75pt" valign="top" width="1%">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">[7] </span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+          <td style="padding:.75pt .75pt .75pt .75pt" valign="top">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">G. Delap,
+                “The NESS Project: Physical Modeling Sound Synthesis and
+                Composition,” 17 August 2016. [Online]. Available:
+                https://youtu.be/j1HP4SB1RFI?t=1m20s. [Accessed 28 March 2017].</span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+    mso-fareast-theme-font:minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow:7">
+          <td style="width:1.0%;padding:.75pt .75pt .75pt .75pt" valign="top" width="1%">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">[8] </span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+          <td style="padding:.75pt .75pt .75pt .75pt" valign="top">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">University
+                of Edinburgh, “NESS,” 2016. [Online]. Available:
+                http://www.ness.music.ed.ac.uk/. [Accessed 26 March 2017].</span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+        </tr>
+        <tr style="mso-yfti-irow:8;mso-yfti-lastrow:yes">
+          <td style="width:1.0%;padding:.75pt .75pt .75pt .75pt" valign="top" width="1%">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">[9] </span><span
+                style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+          <td style="padding:.75pt .75pt .75pt .75pt" valign="top">
+            <p class="MsoBibliography"><span style="mso-no-proof:yes">University
+                of Edinburgh, “MusICA Seminar: Stefan Bilbao &amp; colleagues -
+                Next Generation Sound Synthesis (NESS),” 26 February 2013.
+                [Online]. Available:
+                https://www.youtube.com/watch?v=QdFSHN5YOHk. [Accessed 28 March
+                2017].</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+    minor-fareast;mso-no-proof:yes"></span></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+  mso-no-proof:yes">&nbsp;</span></p>
+    <p class="MsoNormal">&nbsp;</p>
+    <!--[if gte mso 9]><xml>
+ <w:WordDocument>  <w:View>Normal</w:View>
+  <w:Zoom>0</w:Zoom>  <w:TrackMoves/>
+  <w:TrackFormatting/>  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>  <w:LidThemeOther>EN-GB</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>   <w:OverrideTableStyleHps/>
+  </w:Compatibility>  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>   <m:smallFrac m:val="off"/>
+   <m:dispDef/>   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles></xml><![endif]--><!--[if gte mso 10]>
+<style> /* Style Definitions */
+ table.MsoNormalTable	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;	mso-style-priority:99;
+	mso-style-parent:"";	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin-top:0cm;	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:10.0pt;	mso-para-margin-left:0cm;
+	line-height:115%;	mso-pagination:widow-orphan;
+	font-size:11.0pt;	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";	mso-bidi-theme-font:minor-bidi;
+	mso-fareast-language:EN-US;}</style>
+<![endif]-->
+    <p class="MsoNormal">&nbsp;</p>
+    <!--[if gte mso 9]><xml>
+ <o:DocumentProperties>  <o:Version>14.00</o:Version>
+ </o:DocumentProperties> <o:OfficeDocumentSettings>
+  <o:AllowPNG/> </o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>  <w:View>Normal</w:View>
+  <w:Zoom>0</w:Zoom>  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>  <w:LidThemeOther>EN-GB</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>   <w:OverrideTableStyleHps/>
+  </w:Compatibility>  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>   <m:smallFrac m:val="off"/>
+   <m:dispDef/>   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles></xml><![endif]--><!--[if gte mso 10]>
+<style> /* Style Definitions */
+ table.MsoNormalTable	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;	mso-style-priority:99;
+	mso-style-parent:"";	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin-top:0cm;	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:10.0pt;	mso-para-margin-left:0cm;
+	line-height:115%;	mso-pagination:widow-orphan;
+	font-size:11.0pt;	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";	mso-bidi-theme-font:minor-bidi;
+	mso-fareast-language:EN-US;}</style>
+<![endif]-->
   </body>
 </html>
