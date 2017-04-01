@@ -6,7 +6,7 @@ close all; % close all open figures
 % define audio parameters
 Fs = 44100;                   % sample rate for audio output
 Ts = 1 / Fs;                  % sample period
-seconds = 4;                  % number of seconds of output to be calculated
+seconds = 2;                  % number of seconds of output to be calculated
 Ns = 44100 * seconds;         % number of samples in output
 all_samples_range = (1 : Ns); % range containing all masses
 
@@ -16,13 +16,13 @@ mobile_masses_range = (2 : Nm-1);   % range containing all masses with a mobile 
 f0 = 1000;                          % resonant freqency of system in Hz
 m = 0.001 * ones(1, Nm);            % mass given in kg
 m_ = [m m(Nm)];                     % length Nm+1 with last element equal to the right-most mass
-k_ = (2*pi*f0)^2 * m_;              % k given in N/m or kg/m*s^2 -> omega0 = 2*pi*f0 = sqrt(k*l/m))
+k_ = (2*pi*f0)^2 * m_;              % k given in N/m or kg/m*s^2 -> f0 = sqrt(k*l/m)/(2*pi)
 z_crit = (4 * m_ .* k_).^(-1/2);    % z^2 - 4*m*k = 0 -> http://hyperphysics.phy-astr.gsu.edu/hbase/oscda.html#c1
 z_ = z_crit;                        % z given in N*s/m or kg/m*s
 
 % scale spring constant and damping factor by appropriate factors to simplify the loop calculation
-k = (k_ ./ m_) * Ts^2;
-z = (z_ ./ m_) * Ts; 
+K = k_ * Ts^2;
+Z = z_ * Ts; 
 
 % define excitation of the system
 Ei = round(Nm/2, 0); % index of center of excitation
@@ -52,22 +52,22 @@ for n = all_samples_range
         x_curr(Ei) = Ea;       % insert excitation into current displacements
         x_prev = x_curr;       % set previous displacements to be equal to current
         f0 = f0 * f0_scale;
-        k = k * f0_scale;
+        K = K * f0_scale;
     end
     
     % calculate next displacement of first mass simplified with x(i-1) terms disappearing
-    x_next(1) = x_curr(1) * (2 - k(2) - z(2) - k(1) - z(1)) + x_curr(2) * (k(2) + z(2)) ...
-              - x_prev(1) * (1 -        z(2) -        z(1)) - x_prev(2) *         z(2);
+    x_next(1) = (x_curr(1) * (2 - K(2) - Z(2) - K(1) - Z(1)) + x_curr(2) * (K(2) + Z(2)) ...
+               - x_prev(1) * (1 -        Z(2) -        Z(1)) - x_prev(2) *         Z(2)) / m(1);
           
     % calculate next displacement of middle masses
     for i = mobile_masses_range
-        x_next(i) = x_curr(i) * (2 - k(i+1) - z(i+1) - k(i) - z(i)) + x_curr(i+1) * (k(i+1) + z(i+1)) + x_curr(i-1) * (k(i) + z(i)) ...
-                  - x_prev(i) * (1 -          z(i+1) -        z(i)) - x_prev(i+1) *           z(i+1)  - x_prev(i-1) *         z(i);
+        x_next(i) = (x_curr(i) * (2 - K(i+1) - Z(i+1) - K(i) - Z(i)) + x_curr(i+1) * (K(i+1) + Z(i+1)) + x_curr(i-1) * (K(i) + Z(i)) ...
+                   - x_prev(i) * (1 -          Z(i+1) -        Z(i)) - x_prev(i+1) *           Z(i+1)  - x_prev(i-1) *         Z(i)) / m(i);
     end
     
     % calculate next displacement of last mass simplified with x(i+1) terms disappearing
-    x_next(Nm) = x_curr(Nm) * (2 - k(Nm+1) - z(Nm+1) - k(Nm) - z(Nm)) + x_curr(Nm-1) * (k(Nm) + z(Nm)) ...
-               - x_prev(Nm) * (1 - z(Nm+1) -                   z(Nm)) - x_prev(Nm-1) *          z(Nm);
+    x_next(Nm) = (x_curr(Nm) * (2 - K(Nm+1) - Z(Nm+1) - K(Nm) - Z(Nm)) + x_curr(Nm-1) * (K(Nm) + Z(Nm)) ...
+                - x_prev(Nm) * (1 - Z(Nm+1) -                   Z(Nm)) - x_prev(Nm-1) *          Z(Nm)) / m(Nm);
     
     % set output sample to new displacement of the output mass
     O(n) = x_next(Oi);
@@ -76,7 +76,7 @@ for n = all_samples_range
     if (plot_enable == 1) && (mod(n, Fs*plot_update_delay) == 0)
         subplot(2,1,1), plot(x_next); 
         axis([1 Nm -Ea/4 Ea/4]), xlabel('Mass'), ylabel('Amplitude');
-        title(sprintf('m=%fkg, k=%fN/m, z=%fN*s/m, f0=%dHz', m(1), k(1), z(1), f0));
+        title(sprintf('m=%fkg, k=%fN/m, z=%fN*s/m, f0=%dHz', m(1), K(1), Z(1), f0));
         subplot(2,1,2), plot(O); 
         axis([1 Ns -Ea/4 Ea/4]), xlabel('Sample'), ylabel(sprintf('Amplitude of mass %d', Oi));
         pause(plot_update_delay);
@@ -96,6 +96,10 @@ end
 if abs(max(O)) > 0 
     Onorm = O / max(O);
     
+    % add reverb to the output signal
+    reverb = reverberator;
+    Orev = reverb(Onorm);
+    
     % Plot time domain response of output
     figure(2);
     plot(Onorm);
@@ -112,7 +116,7 @@ if abs(max(O)) > 0
     xlabel('Frequency (Hz)');
     ylabel('Magnitude Response (dB)');
 
-    sound(Onorm, Fs);
+    sound(Orev, Fs);
 else
     disp('All output samples are 0');
 end
